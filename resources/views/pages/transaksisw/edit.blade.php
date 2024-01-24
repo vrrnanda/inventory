@@ -1,0 +1,76 @@
+@extends('layouts.main')
+@section('tabel')
+<div class="container-fluid vh-200">
+<div class="col-lg-10 mt-2">
+    <h2> Edit Data Transaksi Hardware </h2>
+    <form action="/transaksisoftware/update/ {{$transaksi_software->id}}" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="row">
+            <div class="col">
+                <label>Kode Transkasi</label>
+                <input type="text" name="kodets" class="form-control" value="{{$transaksi_software->kodets}}" readonly>
+            </div>
+            <div class="col">
+            <label>Tanggal Pembelian</label>
+                <input type="date" name="tgl_pembelian" class="form-control" value="{{$transaksi_software->tgl_pembelian}}">
+            </div>
+        </div>
+        <div class="form-group mt-2">
+            <label>Nama Software</label>
+            <input type="text" name="namasw" class="form-control" value="{{$transaksi_software->namasw}}">
+        </div>
+        <div class="form-gorup">
+        <label>Vendor</label>
+        <select class="form-select" name="namavd" value="{{$transaksi_software->namavd }}">
+            @foreach($vendor as $item)
+            <option value="{{$item->namavd}}">{{$item->namavd}}</option>
+            @endforeach
+          </select>
+        </div>
+        <div class="form-group">
+            <label>Harga</label>
+            <input type="text" name="harga" class="form-control" value="{{$transaksi_software->harga}}">
+        <div class="form-group">
+            <label>Merk</label>
+            <input type="text" name="merk" class="form-control" value="{{$transaksi_software->merk}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Spesifikasi</label>
+            <textarea class="form-control" name="spesifikasi" rows="3"> {{$transaksi_software->spesifikasi}}</textarea>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>No. spk</label>
+                <input type="text" name="no_spk" class="form-control" value="{{$transaksi_software->no_spk}}">
+            </div>
+            <div class="col">
+            <label>Tanggal spk</label>
+                <input type="date" name="tgl_spk" class="form-control" value="{{$transaksi_software->tgl_spk}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>No. do</label>
+                <input type="text" name="no_do" class="form-control" value="{{$transaksi_software->no_do}}">
+            </div>
+            <div class="col">
+            <label>Tanggal do</label>
+                <input type="date" name="tgl_do" class="form-control" value="{{$transaksi_software->tgl_do}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>No. garansi</label>
+                <input type="text" name="no_garansi" class="form-control" value="{{$transaksi_software->no_garansi}}">
+            </div>
+            <div class="col">
+            <label>Tanggal garansi</label>
+                <input type="date" name="tgl_garansi" class="form-control"  value="{{$transaksi_software->tgl_garansi}}">
+            </div>
+        </div>
+        <div class="form-group w-25 mt-2">
+            <input type="submit" value="Simpan" class="btn btn-outline-primary">
+        </div>
+    </form>
+@endsection
